@@ -26,8 +26,17 @@ h2 {
     height: 200px;
     width: 200px;
     border: 1px solid black;
+    content: " ";
 }
 
 .squares:hover {
     border-color: red;
+}
+
+.squares.x::before {
+    content: 'x';
+}
+
+.squares.o:before {
+    content: 'o';
 }
