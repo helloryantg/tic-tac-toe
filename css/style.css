@@ -9,7 +9,7 @@
 }
 
 #reset {
-
+    margin: 20px;
 }
 
 h2 {
@@ -26,7 +26,7 @@ h2 {
     height: 200px;
     width: 200px;
     border: 1px solid black;
-    content: " ";
+    text-align: center;
 }
 
 .squares:hover {
@@ -35,8 +35,12 @@ h2 {
 
 .squares.x::before {
     content: 'x';
+    font-size: 40px;
+    color: red;
 }
 
 .squares.o:before {
     content: 'o';
+    font-size: 40px;
+    color: green;
 }

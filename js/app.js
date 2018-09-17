@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     
     resetBtn.addEventListener('click', function(event) {
-        initGame();
+        resetSquares();
     })
 
     initGame();
@@ -53,7 +53,6 @@ function allSquares () {
 }
 
 function initGame() {
-    // squareData; // Unecessary?
     currentTurn = 1;
     console.log("Game has started: X goes first!");
 }
@@ -64,7 +63,6 @@ function initGame() {
 // 2 Diagonals: [1, 5, 9][3, 5, 7]
 
 function checkWinConditions() {
-    console.log("Checking winning conditions");
     return (squareData['square1'] === squareData['square2'] && squareData['square2'] === squareData['square3']) ||
     (squareData['square4'] === squareData['square5'] && squareData['square5'] === squareData['square6']) ||
     (squareData['square7'] === squareData['square8'] && squareData['square8'] === squareData['square9']) ||
@@ -76,16 +74,23 @@ function checkWinConditions() {
 }
 
 function checkForWinner() {
-    if (currentTurn <= 4) {
-        console.log("Checking for winner");
-        if (checkWinConditions()) {
-            console.log("The winner is " + state); // Check this
-            return true;
-        }
-        if (currentTurn === 9 && !checkWinConditions()) {
-            console.log("It's a tie! Press reset to restart the game.")
-            return true;
-        }
+    if (currentTurn <= 4) return;
+    if (checkWinConditions()) {
+        console.log("The winner is " + state); // Check this
+        return true;
+    }
+    if (currentTurn === 9 && !checkWinConditions()) {
+        console.log("It's a tie! Press reset to restart the game.")
+        return true;
     }
     console.log(checkWinConditions());
+}
+
+function resetSquares() {
+    state = 'x';
+    currentTurn = 1;
+    squareData = allSquares();
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].className = 'squares';
+    }
 }
