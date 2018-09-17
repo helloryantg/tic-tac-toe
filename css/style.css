@@ -14,12 +14,17 @@
 
 h2 {
     display: flex;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 20px 100px;
+    background-color: lightblue;
 }
 
 #square {
     display: flex;
     flex-wrap: wrap;
     width: 606px;
+    border: 1
 }
 
 .squares {
@@ -30,7 +35,7 @@ h2 {
 }
 
 .squares:hover {
-    border-color: red;
+    border: 1px solid red;
 }
 
 .squares.x::before {
