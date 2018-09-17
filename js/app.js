@@ -7,7 +7,7 @@ var currentTurn;
 var mainSquare;
 var squares;
 var resetBtn;
-var gameOver; // unused
+var gameOver;
 
 /*----- cached element references -----*/
 var squareData = allSquares();
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function(){
         state = state === 'x' ? 'o' : 'x';
         currentTurn++;
     })
-    
     resetBtn.addEventListener('click', function(event) {
         resetSquares();
     })
@@ -54,6 +53,7 @@ function allSquares () {
 
 function initGame() {
     currentTurn = 1;
+    gameOver = false;
     console.log("Game has started: X goes first!");
 }
 
@@ -77,10 +77,13 @@ function checkForWinner() {
     if (currentTurn <= 4) return;
     if (checkWinConditions()) {
         console.log("The winner is " + state); // Check this
+        alert(state + " has won the game!");
+        gameOver = true;
         return true;
     }
     if (currentTurn === 9 && !checkWinConditions()) {
         console.log("It's a tie! Press reset to restart the game.")
+        gameOver = true;
         return true;
     }
     console.log(checkWinConditions());
@@ -94,3 +97,17 @@ function resetSquares() {
         squares[i].className = 'squares';
     }
 }
+
+// Minimum Requirements
+    // Display empty tic-tac-toe page
+    // A player can click on the nine cells to make a move
+    // Every click will alternate between marking an X and O
+    // Once occupied with an X or O, cell cannot be played again
+    // Provide a reset game button
+
+// Bonuses
+    // Display whos turn it is
+    // Provide win logic
+    // Display winning message
+    // Provide logic for cat's agme (tie) and display when a tie
+    // Personal touch
